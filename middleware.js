@@ -21,8 +21,6 @@ module.exports.storeReturnTo = (req, res, next) => {
 
 module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
-    console.log("!!!!!!!! validateCampground ", error);
-
     if (error) {
         console.log("error on middleware file!");
         const msg = error.details.map(el => el.message).join(' , ', error);
