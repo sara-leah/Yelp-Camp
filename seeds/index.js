@@ -3,6 +3,10 @@ const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
 const Campground = require('../models/campground');
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const dbUrl= process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 mongoose.connect(dbUrl, {
@@ -57,7 +61,7 @@ seedDB().then(() => {
 })
 
 const pic = [
-    {
+    {//good
         url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702817697/YelpCamp/goow2fpw3jo3mgwkmaed.png',
         filename: 'YelpCamp/goow2fpw3jo3mgwkmaed'
     },
@@ -73,10 +77,6 @@ const pic = [
     {
         url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702809958/YelpCamp/ahp90pivpmqesvknunwu.jpg',
         filename: 'YelpCamp/ahp90pivpmqesvknunwu'
-
-    }, {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702808997/YelpCamp/z8ejqawqz0ataipd5hip.jpg',
-        filename: 'YelpCamp/z8ejqawqz0ataipd5hip'
     },
     {
         url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702810026/YelpCamp/goaylun5noavbp13wneb.jpg',
@@ -96,27 +96,6 @@ const pic = [
     {
         url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702810443/YelpCamp/eyo7rzgnv3m7iqru5gdn.png',
         filename: 'YelpCamp/eyo7rzgnv3m7iqru5gdn'
-    },
-    {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702813156/YelpCamp/ghkquvuyklrqote5esgh.jpg',
-        filename: 'YelpCamp/ghkquvuyklrqote5esgh'
-    },
-    {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702813159/YelpCamp/zj6lrshkppukmazbz6uw.jpg',
-        filename: 'YelpCamp/zj6lrshkppukmazbz6uw'
-    },
-    {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702813177/YelpCamp/h3fknjxkj6ik24l9drui.jpg',
-        filename: 'YelpCamp/h3fknjxkj6ik24l9drui'
-    },
-    {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702813198/YelpCamp/muvimu5biq11dhrcbczu.jpg',
-        filename: 'YelpCamp/muvimu5biq11dhrcbczu'
-
-    },
-    {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702813221/YelpCamp/guumqnumwtjvgy1s5oof.jpg',
-        filename: 'YelpCamp/guumqnumwtjvgy1s5oof'
     }
 ]
 
