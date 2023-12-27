@@ -24,18 +24,22 @@ const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
 
 // for deploy 
-const dbUrl= process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 // for development
 // const dbUrl = 'mongodb://localhost:27017/yelp-camp';
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-});
+// mongoose.connect(dbUrl, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false
+// });
+
+//new version change
+mongoose.connect(dbUrl);
+
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -154,16 +158,17 @@ app.get('/', (req, res) => {
 
 //404 not found
 app.all('*', (req, res, next) => {
+    console.log("!!!!!error in app.js app.all(*)... status code : 404")
+
     next(new ExpressError('page not found', 404))
 })
 
 //error
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    console.log("!!!!!!app.js ");
     if (!err.message)
         err.message = 'Oh No, Something Went Wrong...';
-    console.log("!!!!!!res.status(statusCode) err :  ", err, " err message:", err.message)
+    console.log("!!!!!error in app.js :  ", err)
     res.status(statusCode).render('error', { err })
 })
 
