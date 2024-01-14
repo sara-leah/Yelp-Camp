@@ -78,10 +78,6 @@ const pic = [
         filename: 'YelpCamp/lpkawqcpmj6b6jf2asia'
     },
     {
-        url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702809958/YelpCamp/ahp90pivpmqesvknunwu.jpg',
-        filename: 'YelpCamp/ahp90pivpmqesvknunwu'
-    },
-    {
         url: 'https://res.cloudinary.com/dzengo527/image/upload/v1702810026/YelpCamp/goaylun5noavbp13wneb.jpg',
         filename: 'YelpCamp/goaylun5noavbp13wneb'
     },
